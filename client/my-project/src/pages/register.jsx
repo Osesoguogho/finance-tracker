@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import {ToastContainer, toast } from "react-toastify";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -21,7 +22,7 @@ const purseInputs = {email: email, purse_balance: 0};
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:3100/api/register",
+        `${apiUrl}/api/register`,
         {
           method: "POST",
           headers: {
@@ -31,7 +32,7 @@ const purseInputs = {email: email, purse_balance: 0};
         }
       );
       const purse = await fetch(
-        "http://localhost:3100/api/purse",
+        `${apiUrl}/api/purse`,
         {
           method: "POST",
           headers: {

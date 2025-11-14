@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Modal from "./Modal";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Expenditure = ({expense}) => {
   const [isEdited, setIsEdited] = useState(false);
   const handleDelete = async() => {
-    const response = await fetch(`http://localhost:3100/api/expense/${expense._id}`,
+    const response = await fetch(`${apiUrl}/api/expense/${expense._id}`,
       {
         method: "DELETE"
       }

@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import {jwtDecode} from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Modal = ({expense, setIsEdited}) => {
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const decoded = jwtDecode(token);
 
@@ -25,7 +28,7 @@ const Modal = ({expense, setIsEdited}) => {
     // const Token = localStorage.getItem('token')
     try {
       const response = await fetch(
-        `http://localhost:3100/api/expense/${expense._id}`,
+        `${apiUrl}/api/expense/${expense._id}`,
         {
           method: "PATCH",
           headers: {
@@ -39,8 +42,9 @@ const Modal = ({expense, setIsEdited}) => {
         throw new Error("fail to send expenses")
       }
      const data = await response.json();
-     setIsEdited(false)
-     window.location= "/"
+     setIsEdited(false);
+     navigate("/")
+    
 
     
     } catch (err) {

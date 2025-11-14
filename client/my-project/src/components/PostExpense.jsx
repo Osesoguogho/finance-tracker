@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {jwtDecode} from "jwt-decode";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const PostExpense = ({expenses, setExpenses}) => {
   const token = localStorage.getItem('token');
@@ -25,7 +26,7 @@ const PostExpense = ({expenses, setExpenses}) => {
     // const Token = localStorage.getItem('token')
     try {
       const response = await fetch(
-        "http://localhost:3100/api/expense",
+        `${apiUrl}/api/expense`,
         {
           method: "POST",
           headers: {

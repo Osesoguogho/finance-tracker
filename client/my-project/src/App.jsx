@@ -15,6 +15,7 @@ import Layout from "./components/layout";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 // toast.configure();
 
@@ -22,7 +23,7 @@ function App() {
   const checkAuthenticated = async () => {
     try {
       const Token = localStorage.getItem('token');
-      const res = await fetch("http://localhost:3100/api/verify", {
+      const res = await fetch(`${apiUrl}/api/verify`, {
         method: "POST",
         headers: {Authorization: Token }
       });

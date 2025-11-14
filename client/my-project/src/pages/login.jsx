@@ -3,6 +3,7 @@ import {useState} from "react";
 
 import {ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Login = ({setAuth}) => {
   const [inputs, setInputs] = useState({
@@ -18,7 +19,7 @@ const Login = ({setAuth}) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:3100/api/login",
+        `${apiUrl}/api/login`,
         {
           method: "POST",
           headers: {

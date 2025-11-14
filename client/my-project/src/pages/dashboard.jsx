@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Expenditure from '../components/expenditure';
 import PostExpense from '../components/PostExpense';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Dashboard = () => {
 const [expenses, setExpenses] = useState([]);
@@ -16,9 +17,9 @@ const [amount, setAmount] = useState(purse.purse_balance);
   try {
 setLoading(true);
  const Token = localStorage.getItem("token")
-const [response1, response2] = await Promise.all( [fetch("http://localhost:3100/api/expense", {
+const [response1, response2] = await Promise.all( [fetch(`${apiUrl}/api/expense`, {
   headers: { Authorization: Token }
-}),  fetch("http://localhost:3100/api/purse", {
+}),  fetch(`${apiUrl}/api/purse`, {
   headers: { Authorization: Token }
 })
 ]);
@@ -52,7 +53,7 @@ useEffect(() => {
 const handleAmount = async(e) => {
   e.preventDefault();
   try {
-    const res = await fetch(`http://localhost:3100/api/purse/${purse._id}`, {
+    const res = await fetch(`${apiUrl}/api/purse/${purse._id}`, {
       method: "PATCH",
       headers: {"Content-type": "application/json"},
       body: JSON.stringify({purse_balance: amount})
