@@ -18,7 +18,7 @@ const expenseSchema = new mongoose.Schema({
     payment_method: {type: String, require: true},
     amount: {type: Number, required: true, default: 0},
     // purseBalance: {type: mongoose.SchemaTypes.ObjectId, ref: "purseMoney"},
-    createdAt: {type: Date, default: new Date()}
+    createdAt: {type: Date, default: new Date().toLocaleString()}
 });
 
 const expenses = mongoose.model("expenses", expenseSchema);

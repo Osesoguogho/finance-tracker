@@ -85,7 +85,7 @@ const balanceAmount = purse.purse_balance - totalAmount
 
   return (
    
-    <div className='flex flex-col justify-col'>
+    <div className='flex flex-col justify-col mx-2'>
     <PostExpense expenses={expenses} setExpenses={setExpenses}/>
     <div className='flex justify-center items-center flex-col'>
      {purse && <p className='text-xl font-black'> Monthly Budget: &#8358;{purse.purse_balance} </p>}

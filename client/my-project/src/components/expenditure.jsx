@@ -16,14 +16,14 @@ const Expenditure = ({expense}) => {
 
   return (
     <div>
-        <div className='flex flex-wrap my-4'>
-        <div className='m-2 p-1 bg-slate-900 '>Category: {expense.category}</div>
-        <div className='m-2 p-1 bg-slate-900 '>Description: {expense.description}</div>
-        <div className='m-2 p-1 bg-slate-900 '>Payment Method: {expense.payment_method}</div>
-        <div className='m-2 p-1 bg-slate-900 '>Amount: {expense.amount}</div>
-        <div className='m-2 p-1 bg-slate-900 '>Date: {expense.createdAt}</div>
-        <button onClick={() => setIsEdited(!isEdited)} className='m-2 p-1 bg-yellow-500'>EDIT</button>
-        <button onClick={handleDelete} className='m-2 p-1 bg-red-500'>DELETE</button>
+        <div className='flex flex-wrap my-2 bg-slate-900 '>
+        <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-blue-600">Category:</span> {expense.category}</div>
+        <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Description:</span> {expense.description}</div>
+        <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Payment Mode:</span> {expense.payment_method}</div>
+        <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Amount:</span> {expense.amount}</div>
+        <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Date:</span> {new Date(expense.createdAt).toLocaleDateString()}</div>
+        <button onClick={() => setIsEdited(!isEdited)} className='m-2 p-1 bg-yellow-500 rounded-md'>Edit</button>
+        <button onClick={handleDelete} className='m-2 p-1 bg-red-500 rounded-md'>Delete</button>
         </div>
         {isEdited && <Modal expense={expense} setIsEdited={setIsEdited}/> }
 
