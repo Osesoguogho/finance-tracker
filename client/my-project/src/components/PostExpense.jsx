@@ -40,7 +40,7 @@ const PostExpense = ({expenses, setExpenses}) => {
         throw new Error("fail to send expenses")
       }
      const data = await response.json();
-     setExpenses([...expenses, data]);
+     setExpenses([data, ...expenses]);
 
     
     } catch (err) {

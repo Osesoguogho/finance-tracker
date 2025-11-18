@@ -4,7 +4,7 @@ import { MdOutlineVerticalShadesClosed } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const Expenditure = ({expense}) => {
+const Expenditure = ({expense, setExpenses}) => {
   const [isEdited, setIsEdited] = useState(false);
   const handleDelete = async() => {
     const response = await fetch(`${apiUrl}/api/expense/${expense._id}`,
@@ -13,7 +13,12 @@ const Expenditure = ({expense}) => {
       }
     )
     if ( response.status == 201) {
-      window.location = "/"
+      setExpenses((prev)=>{
+       return prev.filter((ex)=> {
+          return ex._id !== expense._id
+        } )
+      })
+      // window.location = "/"
     }
   }
 
