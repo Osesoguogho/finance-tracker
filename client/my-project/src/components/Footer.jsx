@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='flex justify-center'>
-        <p>&copy; Oses {new Date().getFullYear}</p>
+        <p>&copy; Oses {new Date().getFullYear()}</p>
     </div>
   )
 }

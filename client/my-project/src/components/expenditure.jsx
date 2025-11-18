@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import { MdOutlineVerticalShadesClosed } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Expenditure = ({expense}) => {
@@ -23,8 +25,8 @@ const Expenditure = ({expense}) => {
         <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Payment Mode:</span> {expense.payment_method}</div>
         <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Amount:</span> {expense.amount}</div>
         <div className='m-2 p-1 bg-slate-900 '><span className="text-justify font-bold text-ellipsis text-blue-600">Date:</span> {new Date(expense.createdAt).toLocaleDateString()}</div>
-        <button onClick={() => setIsEdited(!isEdited)} className='m-2 p-1 bg-yellow-500 rounded-md'>Edit</button>
-        <button onClick={handleDelete} className='m-2 p-1 bg-red-500 rounded-md'>Delete</button>
+        <button onClick={() => setIsEdited(!isEdited)} className='m-2 p-1 rounded-md'><CiEdit /></button>
+        <button onClick={handleDelete} className='m-2 p-1 rounded-md'><MdOutlineVerticalShadesClosed /></button>
         </div>
         {isEdited && <Modal expense={expense} setIsEdited={setIsEdited}/> }
 
