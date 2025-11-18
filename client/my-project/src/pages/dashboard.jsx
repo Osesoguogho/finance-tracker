@@ -48,8 +48,9 @@ useEffect(() => {
   mothlyExpense();
 }, []);
 
-const expenditure = expenses.sort((a, b)=> b.createdAt - a.createdAt
+const expenditure = expenses.sort((a, b)=> a.createdAt - b.createdAt
 )
+console.log(expenditure);
 
 const handleAmount = async(e) => {
   e.preventDefault();
