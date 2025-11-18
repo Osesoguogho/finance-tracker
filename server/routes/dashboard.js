@@ -10,8 +10,8 @@ router.get("/expense", authorize, async(req, res)=> {
 try {
     const currentUser = await expenses.find({user_id: idOfUser})
   if(!currentUser) return res.status(404).json({status: "U haven't made any expenses"});
-
-  return res.json(currentUser);
+ const expenses = currentUser.sort((a, b)=> b.createdAt - a.createdAt)
+  return res.json(expenses);
 } catch (error) {
     console.log(error);
     res.status(500).json("server error");

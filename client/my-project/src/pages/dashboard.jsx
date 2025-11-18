@@ -48,7 +48,8 @@ useEffect(() => {
   mothlyExpense();
 }, []);
 
-
+const expenditure = expenses.sort((a, b)=> b.createdAt - a.createdAt
+)
 
 const handleAmount = async(e) => {
   e.preventDefault();
@@ -90,13 +91,14 @@ const balanceAmount = purse.purse_balance - totalAmount
     <PostExpense expenses={expenses} setExpenses={setExpenses}/>
     <div className='flex justify-center items-center flex-col'>
      {purse && <p className='text-xl font-black'> Monthly Budget: &#8358;{purse.purse_balance} </p>}
+     <p className='font-bold'> Money spent: &#8358;{totalAmount}</p>
      <p className='font-bold'> Balance: &#8358;{balanceAmount}</p>
      <button className='bg-yellow-900 px-2 my-2' onClick={() => setBudget(!budget)}>update budget</button>
      {budget && <div> <input className='text-center rounded-xl text-black border-black border-solid border-2' type='number' name='amount' value={amount} onChange={ (e) => setAmount(e.target.value)} /> <button className='bg-blue-600 rounded-xl px-3' onClick={handleAmount}>submit</button> </div>
      }
     </div>
       <div className='bg-[#f5f5f5] rounded-xl shadow-2xl text-white m-auto h-auto flex justify-center flex-col my-4' >
-        {expenses.map((expense) =>  ( <div key={expense._id}> <Expenditure expense={expense} /> </div>)) };
+        {expenditure.map((expense) =>  ( <div key={expense._id}> <Expenditure expense={expense} setExpenses={setExpenses} /> </div>)) };
       </div>
     </div>
   )

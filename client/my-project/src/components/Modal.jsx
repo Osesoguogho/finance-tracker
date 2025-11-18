@@ -43,7 +43,7 @@ const Modal = ({expense, setIsEdited}) => {
       }
      const data = await response.json();
      setIsEdited(false);
-     navigate("/")
+     window.location.reload()
     
 
     

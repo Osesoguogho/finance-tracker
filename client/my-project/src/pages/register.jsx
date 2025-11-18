@@ -63,7 +63,7 @@ const purseInputs = {email: email, purse_balance: 0};
   return (
     <div className="flex justify-center content-center  h-dvh ">
     <div className=" container m-auto flex flex-col w-80 h-80 border-slate-500 rounded-lg shadow-white-900  ">
-      <h1 className="mt-5 text-center">Register</h1>
+      <h1 className="mt-5 text-center font-bold text-2xl">Register</h1>
       <form onSubmit={onSubmitForm} className="flex flex-col">
         <input
           type="text"
@@ -89,10 +89,10 @@ const purseInputs = {email: email, purse_balance: 0};
           onChange={e => onChange(e)}
           className="form-control my-3 rounded-lg text-center"
         />
-        <button className="btn btn-success btn-block">Submit</button>
+        <button className="bg-green-400 my-5">Submit</button>
       </form>
       {error && <p> {error}</p>}
-      <Link to="/login">login</Link>
+      <Link to="/login" className="bg-blue-400 text-center my-5">login</Link>
     </div>
     <ToastContainer/>
     </div>
