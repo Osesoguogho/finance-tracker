@@ -8,7 +8,7 @@ router.get("/expense", authorize, async(req, res)=> {
  const idOfUser = res.user.id;
  console.log(idOfUser);
 try {
-    const currentUser = await expenses.find({user_id: idOfUser}).sort({createdAt: -1})
+    const currentUser = await expenses.find({user_id: idOfUser}).sort({createdAt: 'desc'});
   if(!currentUser) return res.status(404).json({status: "U haven't made any expenses"});
   return res.json(currentUser);
 } catch (error) {
